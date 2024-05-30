@@ -4,7 +4,6 @@ module Vandelay
         class Two < Vandelay::Integrations::Vendor::Base
             def authenticate
                 super("/auth_tokens/1")
-                puts @token_data
             end
 
             def patient(id)

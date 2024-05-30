@@ -27,7 +27,6 @@ RSpec.describe Vandelay::REST::PatientsPatientRecord do
     context  "patient exists but with record" do
         it "returns correct record" do
             get "/patients/2/record"
-
             expect(JSON.parse(last_response.body)['patient_id']).to eq('743')
             expect(last_response.status).to eq(200)
         end
