@@ -9,13 +9,13 @@ module Vandelay
       end
 
       def self.registered(app)
-        app.get '/patients/:id' do
-          id = Integer(params[:id]) rescue nil
-          halt(400, {message: 'Invalid id'}.to_json) unless id
+        app.get '/patients/:patient_id' do
+          patient_id = Integer(params[:patient_id]) rescue nil
+          halt(400, {message: 'Invalid id'}.to_json) unless patient_id
 
-          result = Vandelay::REST::PatientsPatient.patients_srvc.retrieve_one(id)
+          result = Vandelay::REST::PatientsPatient.patients_srvc.retrieve_one patient_id
           halt(404, {message: 'Patient not found'}.to_json) unless result
-          
+
           json(result.to_h)
         end
       end
